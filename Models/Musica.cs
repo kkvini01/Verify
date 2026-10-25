@@ -11,7 +11,7 @@ namespace Verify.Models
 
         public int IdMusica { get; set; }
         public string TituloMusica { get; set; }
-        public int DuracaoSegundos { get; set; }
+        public string DuracaoSegundos { get; set; }
         public DateTime DataLancamentoMusica { get; set; }
         public string GeneroMusical {  get; set; }
         public string NomeCompositor {  get; set; }

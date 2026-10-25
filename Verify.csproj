@@ -67,11 +67,29 @@
     <Compile Include="Views\frmAlbum.Designer.cs">
       <DependentUpon>frmAlbum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAlbumSelecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAlbumSelecao.Designer.cs">
+      <DependentUpon>frmAlbumSelecao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmArtista.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmArtista.Designer.cs">
       <DependentUpon>frmArtista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmArtistaSelecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmArtistaSelecao.Designer.cs">
+      <DependentUpon>frmArtistaSelecao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmInserirMusicas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmInserirMusicas.Designer.cs">
+      <DependentUpon>frmInserirMusicas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmMusica.cs">
       <SubType>Form</SubType>
@@ -79,11 +97,23 @@
     <Compile Include="Views\frmMusica.Designer.cs">
       <DependentUpon>frmMusica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmMusicaSelecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmMusicaSelecao.Designer.cs">
+      <DependentUpon>frmMusicaSelecao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmPlaylist.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmPlaylist.Designer.cs">
       <DependentUpon>frmPlaylist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmPlaylistSelecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmPlaylistSelecao.Designer.cs">
+      <DependentUpon>frmPlaylistSelecao.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -97,6 +127,18 @@
     <Compile Include="Views\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmUsuarioSelecao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmUsuarioSelecao.Designer.cs">
+      <DependentUpon>frmUsuarioSelecao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmVisualizarPlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmVisualizarPlaylist.Designer.cs">
+      <DependentUpon>frmVisualizarPlaylist.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,24 +147,46 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\frmAlbum.resx">
       <DependentUpon>frmAlbum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmAlbumSelecao.resx">
+      <DependentUpon>frmAlbumSelecao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmArtista.resx">
       <DependentUpon>frmArtista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmArtistaSelecao.resx">
+      <DependentUpon>frmArtistaSelecao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmInserirMusicas.resx">
+      <DependentUpon>frmInserirMusicas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMusica.resx">
       <DependentUpon>frmMusica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmMusicaSelecao.resx">
+      <DependentUpon>frmMusicaSelecao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmPlaylist.resx">
       <DependentUpon>frmPlaylist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmPlaylistSelecao.resx">
+      <DependentUpon>frmPlaylistSelecao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmUsuarioSelecao.resx">
+      <DependentUpon>frmUsuarioSelecao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmVisualizarPlaylist.resx">
+      <DependentUpon>frmVisualizarPlaylist.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +202,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="verify-logo.png" />
     <Content Include="VERIFY.sql" />
   </ItemGroup>
   <ItemGroup />

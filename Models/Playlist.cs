@@ -9,14 +9,14 @@ namespace Verify.Models
     public class Playlist
     {
 
-        public int IdPlayist { get; set; }
-        public string NomePlayist { get; set; }
-        public string DescPlayist { get; set; }
-        public DateTime CriacaoPlayist { get; set; }
-        public DateTime AtualizacaoPlayist { get; set; }
-        
+        public int IdPlaylist { get; set; }
+        public string NomePlaylist { get; set; }
+        public string DescPlaylist { get; set; }
+        public DateTime CriacaoPlaylist { get; set; }
+        public DateTime AtualizacaoPlaylist { get; set; }
+
         // Retorna string porem no sql ta como INT (0 e 1) antes de inserir no banco precisa tratar isso aqui >_<
-        // opção da bolinha - Privado ou Publico
+        // ComboBox
         public string Privacidade {  get; set; }
         public int QtdLikes { get; set; }
 

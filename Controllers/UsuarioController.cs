@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System;
 
-namespace Verify.Controls
+namespace Verify.Controllers
 {
     public class UsuarioController
     {
@@ -22,8 +22,8 @@ namespace Verify.Controls
             SqlCommand command = new SqlCommand(query);
 
             // Definir os valores dos parâmetros
-            command.Parameters.AddWithValue("@nome_completo", usuario.NomeUsuario);
-            command.Parameters.AddWithValue("@nome_usuario", usuario.NomeDeUsuario);
+            command.Parameters.AddWithValue("@nome_completo", usuario.NomeCompleto);
+            command.Parameters.AddWithValue("@nome_usuario", usuario.NomeUsuario);
             command.Parameters.AddWithValue("@email", usuario.EmailUsuario);
             command.Parameters.AddWithValue("@senha", usuario.SenhaUsuario);
             command.Parameters.AddWithValue("@data_nascimento", usuario.DataNascUsuario);
@@ -51,8 +51,8 @@ namespace Verify.Controls
             SqlCommand command = new SqlCommand(query);
 
             // Definir os parâmetros
-            command.Parameters.AddWithValue("@nome_completo", usuario.NomeUsuario);
-            command.Parameters.AddWithValue("@nome_usuario", usuario.NomeDeUsuario);
+            command.Parameters.AddWithValue("@nome_completo", usuario.NomeCompleto);
+            command.Parameters.AddWithValue("@nome_usuario", usuario.NomeUsuario);
             command.Parameters.AddWithValue("@email", usuario.EmailUsuario);
             command.Parameters.AddWithValue("@senha", usuario.SenhaUsuario);
             command.Parameters.AddWithValue("@data_nascimento", usuario.DataNascUsuario);
@@ -106,8 +106,8 @@ namespace Verify.Controls
 
                 // Mapear os dados do SQL para o objeto
                 usuario.IdUsuario = (int)dataTable.Rows[0]["id_usuario"];
-                usuario.NomeUsuario = (string)dataTable.Rows[0]["nome_completo"];
-                usuario.NomeDeUsuario = (string)dataTable.Rows[0]["nome_usuario"];
+                usuario.NomeCompleto = (string)dataTable.Rows[0]["nome_completo"];
+                usuario.NomeUsuario = (string)dataTable.Rows[0]["nome_usuario"];
                 usuario.EmailUsuario = (string)dataTable.Rows[0]["email"];
                 usuario.SenhaUsuario = (string)dataTable.Rows[0]["senha"];
                 usuario.DataNascUsuario = (DateTime)dataTable.Rows[0]["data_nascimento"];
@@ -158,8 +158,8 @@ namespace Verify.Controls
 
                 // Mapear os dados do SQL para o objeto
                 usuario.IdUsuario = (int)row["id_usuario"];
-                usuario.NomeUsuario = (string)row["nome_completo"];
-                usuario.NomeDeUsuario = (string)row["nome_usuario"];
+                usuario.NomeCompleto = (string)row["nome_completo"];
+                usuario.NomeUsuario = (string)row["nome_usuario"];
                 usuario.EmailUsuario = (string)row["email"];
                 usuario.SenhaUsuario = (string)row["senha"];
                 usuario.DataNascUsuario = (DateTime)row["data_nascimento"];
@@ -181,9 +181,17 @@ namespace Verify.Controls
         }
 
         // Função para consultar usuários pelo nome completo
-        public UsuarioCollection GetByNomeCompleto(string valor)
+        public UsuarioCollection GetByNomeUsuario(string valor)
         {
-            return GetByFilters("nome_completo", valor);
+            return GetByFilters("nome_usuario", valor);
+        }
+        public UsuarioCollection GetByIdUsuario(int id)
+        {
+            return GetByFilters("id_usuario", id.ToString());
+        }
+        public UsuarioCollection GetByEmail(string email)
+        {
+            return GetByFilters("email", email);
         }
 
         // Função para consultar usuários pelo tipo de plano

@@ -245,5 +245,39 @@ namespace Verify.Controllers
             // Retornar os relacionamentos
             return relacionamentos;
         }
+
+        // Consultar as músicas de uma playlist com seus títulos
+        public MusicaCollection GetMusicasDaPlaylist(int idPlaylist)
+        {
+            string query =
+                "SELECT M.ID_MUSICA, M.TITULO_MUSICA " +
+                "FROM PLAYLIST_MUSICA PM " +
+                "INNER JOIN MUSICA M " +
+                "ON PM.ID_MUSICA = M.ID_MUSICA " +
+                "WHERE PM.ID_PLAYLIST = @IdPlaylist " +
+                "ORDER BY M.ID_MUSICA";
+
+            SqlCommand command = new SqlCommand(query);
+
+            command.Parameters.AddWithValue(
+                "@IdPlaylist", idPlaylist);
+
+            DataTable dataTable = dataBase.GetDataTable(command);
+
+            MusicaCollection musicas = new MusicaCollection();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Musica musica = new Musica();
+
+                musica.IdMusica = (int)row["ID_MUSICA"];
+                musica.TituloMusica = (string)row["TITULO_MUSICA"];
+
+                musicas.Add(musica);
+            }
+
+            return musicas;
+        }
+
     }
 }

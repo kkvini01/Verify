@@ -1,205 +1,219 @@
-﻿using System;
+﻿using Verify.Models;
+using Verify.Services;
 using System.Data;
 using System.Data.SqlClient;
-using Verify.Models;
-using Verify.Services;
+using System;
 
 namespace Verify.Controllers
 {
-    // Classe de controle com as regras de negócio
-    // para manipular o cadastro de Artistas
-    public class ArtistaController
+    public class MusicaController
     {
-        // Variável privada global para armazenar
-        // a instância da camada de Serviço
-        DataBaseService dataBase = new DataBaseService();
+            DataBaseService dataBase = new DataBaseService();
 
-        // Função pública para inserir um novo artista
-        public int Inserir(Artista artista)
+        // Função pública para inserir uma música
+        public int Inserir(Musica musica)
         {
-            // Criar o comando SQL
+            // Criar o comando SQL que será executado
             string query =
-                "INSERT INTO ARTISTA " +
-                "(NOME_ARTISTICO, NOME_REAL, BIOGRAFIA, GENERO_PRINCIPAL, DATA_NASCIMENTO, DATA_INICIO_CARREIRA) " +
-                "VALUES " +
-                "(@NomeArtistico, @NomeReal, @Biografia, @GeneroMusicalPrincipal, @DataNascimento, @DataInicioCarreira)";
+                "INSERT INTO musica (id_artista, id_album, titulo_musica, duracao_musica, data_lancamento_musica, genero_musical, compositor, numero_reproducoes) " +
+                "VALUES (@id_artista, @id_album, @titulo_musica, @duracao_musica, @data_lancamento_musica, @genero_musical, @compositor, @numero_reproducoes)";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
-            // Definir os parâmetros
-            command.Parameters.AddWithValue("@NomeArtistico", artista.NomeArtistico);
-            command.Parameters.AddWithValue("@NomeReal", artista.NomeReal);
-            command.Parameters.AddWithValue("@Biografia", artista.Biografia);
-            command.Parameters.AddWithValue("@GeneroMusicalPrincipal", artista.GeneroMusicalPrincipal);
-            command.Parameters.AddWithValue("@DataNascimento", artista.DataNascimento);
-            command.Parameters.AddWithValue("@DataInicioCarreira", artista.DataInicioCarreira);
+            // Definir os valores dos parâmetros
+            command.Parameters.AddWithValue("@id_artista", musica.IdArtista.IdArtista);
+            command.Parameters.AddWithValue("@id_album", musica.IdAlbum.IdAlbum);
+            command.Parameters.AddWithValue("@titulo_musica", musica.TituloMusica);
+            command.Parameters.AddWithValue("@duracao_musica", musica.DuracaoSegundos);
+            command.Parameters.AddWithValue("@data_lancamento_musica", musica.DataLancamentoMusica);
+            command.Parameters.AddWithValue("@genero_musical", musica.GeneroMusical);
+            command.Parameters.AddWithValue("@compositor", musica.NomeCompositor);
+            command.Parameters.AddWithValue("@numero_reproducoes", musica.NumReprod);
 
-            // Executar o comando
+            // Executar o comando e retornar a quantidade de linhas afetadas
             return dataBase.ExecuteSql(command);
         }
 
-        // Função pública para atualizar um artista
-        public int Alterar(Artista artista)
+        // Função pública para atualizar uma música
+        public int Alterar(Musica musica)
         {
             // Criar o comando SQL para o UPDATE
             string query =
-                "UPDATE ARTISTA SET " +
-                "NOME_ARTISTICO = @NomeArtistico, " +
-                "NOME_REAL = @NomeReal, " +
-                "BIOGRAFIA = @Biografia, " +
-                "GENERO_PRINCIPAL = @GeneroMusicalPrincipal, " +
-                "DATA_NASCIMENTO = @DataNascimento, " +
-                "DATA_INICIO_CARREIRA = @DataInicioCarreira " +
-                "WHERE ID_ARTISTA = @IdArtista";
+                "UPDATE musica SET " +
+                "id_artista = @id_artista, " +
+                "id_album = @id_album, " +
+                "titulo_musica = @titulo_musica, " +
+                "duracao_musica = @duracao_musica, " +
+                "data_lancamento_musica = @data_lancamento_musica, " +
+                "genero_musical = @genero_musical, " +
+                "compositor = @compositor, " +
+                "numero_reproducoes = @numero_reproducoes " +
+                "WHERE id_musica = @id_musica";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
             // Definir os parâmetros
-            command.Parameters.AddWithValue("@NomeArtistico", artista.NomeArtistico);
-            command.Parameters.AddWithValue("@NomeReal", artista.NomeReal);
-            command.Parameters.AddWithValue("@Biografia", artista.Biografia);
-            command.Parameters.AddWithValue("@GeneroMusicalPrincipal", artista.GeneroMusicalPrincipal);
-            command.Parameters.AddWithValue("@DataNascimento", artista.DataNascimento);
-            command.Parameters.AddWithValue("@DataInicioCarreira", artista.DataInicioCarreira);
-            command.Parameters.AddWithValue("@IdArtista", artista.IdArtista);
+            command.Parameters.AddWithValue("@id_artista", musica.IdArtista.IdArtista);
+            command.Parameters.AddWithValue("@id_album", musica.IdAlbum.IdAlbum);
+            command.Parameters.AddWithValue("@titulo_musica", musica.TituloMusica);
+            command.Parameters.AddWithValue("@duracao_musica", musica.DuracaoSegundos);
+            command.Parameters.AddWithValue("@data_lancamento_musica", musica.DataLancamentoMusica);
+            command.Parameters.AddWithValue("@genero_musical", musica.GeneroMusical);
+            command.Parameters.AddWithValue("@compositor", musica.NomeCompositor);
+            command.Parameters.AddWithValue("@numero_reproducoes", musica.NumReprod);
+            command.Parameters.AddWithValue("@id_musica", musica.IdMusica);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
 
-        // Função pública para excluir um artista
+        // Função pública para excluir uma música
         public int Excluir(int id)
         {
             // Criar o comando SQL para o DELETE
             string query =
-                "DELETE FROM ARTISTA " +
-                "WHERE ID_ARTISTA = @Id";
+                "DELETE FROM musica " +
+                "WHERE id_musica = @id_musica";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
             // Definir os parâmetros
-            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@id_musica", id);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
 
-        // Função pública para consultar um artista por ID
-        public Artista GetById(int id)
+        // Função pública para consultar uma música por ID
+        public Musica GetById(int id)
         {
             // Criar o comando SELECT
             string query =
-                "SELECT * FROM ARTISTA " +
-                "WHERE ID_ARTISTA = @Id";
+                "SELECT * FROM musica " +
+                "WHERE id_musica = @id_musica";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
             // Definir os parâmetros
-            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@id_musica", id);
 
-            // Executar a consulta
+            // Recuperar os dados retornados
             DataTable dataTable = dataBase.GetDataTable(command);
 
-            // Converter os dados SQL em objeto Artista
+            // Verificar se algum registro foi encontrado
             if (dataTable.Rows.Count > 0)
             {
-                // Instanciar o objeto artista
-                Artista artista = new Artista();
+                // Instanciar o objeto Musica
+                Musica musica = new Musica();
 
-                // Mapear os valores retornados
-                artista.IdArtista = (int)dataTable.Rows[0]["ID_ARTISTA"];
-                artista.NomeArtistico = (string)dataTable.Rows[0]["NOME_ARTISTICO"];
-                artista.NomeReal = (string)dataTable.Rows[0]["NOME_REAL"];
-                artista.Biografia = (string)dataTable.Rows[0]["BIOGRAFIA"];
-                artista.GeneroMusicalPrincipal = (string)dataTable.Rows[0]["GENERO_PRINCIPAL"];
-                artista.DataNascimento = (DateTime)dataTable.Rows[0]["DATA_NASCIMENTO"];
-                artista.DataInicioCarreira = (DateTime)dataTable.Rows[0]["DATA_INICIO_CARREIRA"];
+                // Mapear os dados do SQL para o objeto
+                musica.IdMusica = (int)dataTable.Rows[0]["id_musica"];
+                musica.IdArtista = new Artista();
+                musica.IdArtista.IdArtista = (int)dataTable.Rows[0]["id_artista"];
+                musica.IdAlbum = new Album();
+                musica.IdAlbum.IdAlbum = (int)dataTable.Rows[0]["id_album"];
+                musica.TituloMusica = (string)dataTable.Rows[0]["titulo_musica"];
+                musica.DuracaoSegundos = dataTable.Rows[0]["duracao_musica"].ToString();
+                musica.DataLancamentoMusica = (DateTime)dataTable.Rows[0]["data_lancamento_musica"];
+                musica.GeneroMusical = (string)dataTable.Rows[0]["genero_musical"];
+                musica.NomeCompositor = (string)dataTable.Rows[0]["compositor"];
+                musica.NumReprod = (int)dataTable.Rows[0]["numero_reproducoes"];
 
                 // Retornar o objeto mapeado
-                return artista;
+                return musica;
             }
             else
+            {
+                // Retornar null caso não encontre a música
                 return null;
+            }
         }
 
-        // Função pública para consultar vários artistas
-        // com a possibilidade de aplicar filtros
-        public ArtistaCollection GetByFilters(
+        // Função pública para consultar músicas com filtro
+        public MusicaCollection GetByFilters(
             string campo = "", string filtro = "")
         {
-            // Criar o comando SQL para o SELECT
-            string query = "SELECT * FROM ARTISTA ";
+            // Criar o comando SELECT
+            string query = "SELECT * FROM musica ";
 
-            // Verificar se possui filtro
+            // Verificar se existe algum filtro
             if (filtro != "")
                 query += "WHERE " + campo + " LIKE @filtro ";
 
-            // Adicionar ordenação
-            query += " ORDER BY NOME_ARTISTICO";
+            // Ordenar os resultados pelo título
+            query += "ORDER BY titulo_musica";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
-            // Definir os parâmetros
+            // Definir os parâmetros do filtro
             if (filtro != "")
                 command.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
 
-            // Executar a consulta
+            // Recuperar os dados retornados
             DataTable dataTable = dataBase.GetDataTable(command);
 
-            // Instanciar a coleção de artistas
-            ArtistaCollection artistas = new ArtistaCollection();
+            // Instanciar a coleção de músicas
+            MusicaCollection musicas = new MusicaCollection();
 
             // Percorrer todas as linhas retornadas
             foreach (DataRow row in dataTable.Rows)
             {
-                // Instanciar o objeto artista
-                Artista artista = new Artista();
+                // Instanciar o objeto Musica
+                Musica musica = new Musica();
 
-                // Converter os dados SQL para o objeto C#
-                artista.IdArtista = (int)row["ID_ARTISTA"];
-                artista.NomeArtistico = (string)row["NOME_ARTISTICO"];
-                artista.NomeReal = (string)row["NOME_REAL"];
-                artista.Biografia = (string)row["BIOGRAFIA"];
-                artista.GeneroMusicalPrincipal = (string)row["GENERO_PRINCIPAL"];
-                artista.DataNascimento = (DateTime)row["DATA_NASCIMENTO"];
-                artista.DataInicioCarreira = (DateTime)row["DATA_INICIO_CARREIRA"];
+                // Mapear os dados do SQL para o objeto
+                musica.IdMusica = (int)row["id_musica"];
+                musica.IdArtista = new Artista();
+                musica.IdArtista.IdArtista = (int)row["id_artista"];
+                musica.IdAlbum = new Album();
+                musica.IdAlbum.IdAlbum = (int)row["id_album"];
+                musica.TituloMusica = (string)row["titulo_musica"];
+                musica.DuracaoSegundos = (string)row["duracao_musica"];
+                musica.DataLancamentoMusica = (DateTime)row["data_lancamento_musica"];
+                musica.GeneroMusical = (string)row["genero_musical"];
+                musica.NomeCompositor = (string)row["compositor"];
+                musica.NumReprod = (int)row["numero_reproducoes"];
 
-                // Adicionar o objeto à coleção
-                artistas.Add(artista);
+                // Adicionar a música à coleção
+                musicas.Add(musica);
             }
 
-            // Retornar a coleção de artistas
-            return artistas;
+            // Retornar a coleção
+            return musicas;
         }
 
-        // Função para retornar todos os artistas
-        public ArtistaCollection GetAll()
+        // Função para retornar todas as músicas
+        public MusicaCollection GetAll()
         {
             // Consultar sem aplicar filtros
             return GetByFilters();
         }
 
-        // Função para retornar artistas filtrando pelo nome artístico
-        public ArtistaCollection GetByName(string value)
+        // Função para retornar músicas pelo Id
+        public MusicaCollection GetByIdMusica(int valor)
         {
-            return GetByFilters("NOME_ARTISTICO", value);
+            return GetByFilters("id_musica", valor.ToString());
         }
 
-        // Função para retornar artistas filtrando pelo nome real
-        public ArtistaCollection GetByRealName(string value)
+        // Função para consultar músicas pelo título
+        public MusicaCollection GetByTitulo(string valor)
         {
-            return GetByFilters("NOME_REAL", value);
+            return GetByFilters("titulo_musica", valor);
         }
-
-        // Função para retornar artistas filtrando pelo gênero musical
-        public ArtistaCollection GetByGenre(string value)
+        // Função para consultar músicas pelo gênero
+        public MusicaCollection GetByCompositor(string valor)
         {
-            return GetByFilters("GENERO_PRINCIPAL", value);
+            return GetByFilters("compositor", valor);
+        }
+        // Função para consultar músicas pelo ID artista
+        public MusicaCollection GetByIdArtista(int valor)
+        {
+            return GetByFilters("id_artista", valor.ToString());
         }
     }
 }

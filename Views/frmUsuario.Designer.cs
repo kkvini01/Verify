@@ -35,13 +35,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNomeCompletoUser = new System.Windows.Forms.TextBox();
-            this.txtNickname = new System.Windows.Forms.TextBox();
+            this.txtNomeUsuario = new System.Windows.Forms.TextBox();
             this.txtSenhaUsuario = new System.Windows.Forms.TextBox();
             this.txtEmailUsuario = new System.Windows.Forms.TextBox();
-            this.txtPlanoUsuario = new System.Windows.Forms.TextBox();
-            this.txtDataNascUsuario = new System.Windows.Forms.TextBox();
             this.btnCadastroUsuario = new System.Windows.Forms.Button();
-            this.btnLimparUsuario = new System.Windows.Forms.Button();
+            this.cb_TipoPlano = new System.Windows.Forms.ComboBox();
+            this.dtp_DataNascimentoUser = new System.Windows.Forms.DateTimePicker();
+            this.txtIdUsuario = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -105,12 +106,12 @@
             this.txtNomeCompletoUser.Size = new System.Drawing.Size(165, 20);
             this.txtNomeCompletoUser.TabIndex = 6;
             // 
-            // txtNickname
+            // txtNomeUsuario
             // 
-            this.txtNickname.Location = new System.Drawing.Point(15, 161);
-            this.txtNickname.Name = "txtNickname";
-            this.txtNickname.Size = new System.Drawing.Size(165, 20);
-            this.txtNickname.TabIndex = 7;
+            this.txtNomeUsuario.Location = new System.Drawing.Point(15, 161);
+            this.txtNomeUsuario.Name = "txtNomeUsuario";
+            this.txtNomeUsuario.Size = new System.Drawing.Size(165, 20);
+            this.txtNomeUsuario.TabIndex = 7;
             // 
             // txtSenhaUsuario
             // 
@@ -118,6 +119,7 @@
             this.txtSenhaUsuario.Name = "txtSenhaUsuario";
             this.txtSenhaUsuario.Size = new System.Drawing.Size(185, 20);
             this.txtSenhaUsuario.TabIndex = 8;
+            this.txtSenhaUsuario.UseSystemPasswordChar = true;
             // 
             // txtEmailUsuario
             // 
@@ -125,20 +127,6 @@
             this.txtEmailUsuario.Name = "txtEmailUsuario";
             this.txtEmailUsuario.Size = new System.Drawing.Size(185, 20);
             this.txtEmailUsuario.TabIndex = 9;
-            // 
-            // txtPlanoUsuario
-            // 
-            this.txtPlanoUsuario.Location = new System.Drawing.Point(500, 161);
-            this.txtPlanoUsuario.Name = "txtPlanoUsuario";
-            this.txtPlanoUsuario.Size = new System.Drawing.Size(100, 20);
-            this.txtPlanoUsuario.TabIndex = 10;
-            // 
-            // txtDataNascUsuario
-            // 
-            this.txtDataNascUsuario.Location = new System.Drawing.Point(500, 54);
-            this.txtDataNascUsuario.Name = "txtDataNascUsuario";
-            this.txtDataNascUsuario.Size = new System.Drawing.Size(113, 20);
-            this.txtDataNascUsuario.TabIndex = 11;
             // 
             // btnCadastroUsuario
             // 
@@ -148,28 +136,60 @@
             this.btnCadastroUsuario.TabIndex = 12;
             this.btnCadastroUsuario.Text = "Cadastrar";
             this.btnCadastroUsuario.UseVisualStyleBackColor = true;
+            this.btnCadastroUsuario.Click += new System.EventHandler(this.btnCadastroUsuario_Click);
             // 
-            // btnLimparUsuario
+            // cb_TipoPlano
             // 
-            this.btnLimparUsuario.Location = new System.Drawing.Point(645, 377);
-            this.btnLimparUsuario.Name = "btnLimparUsuario";
-            this.btnLimparUsuario.Size = new System.Drawing.Size(134, 36);
-            this.btnLimparUsuario.TabIndex = 13;
-            this.btnLimparUsuario.Text = "Limpar";
-            this.btnLimparUsuario.UseVisualStyleBackColor = true;
+            this.cb_TipoPlano.FormattingEnabled = true;
+            this.cb_TipoPlano.Items.AddRange(new object[] {
+            "Gratuito",
+            "Individual",
+            "Universitario",
+            "Duo",
+            "Familia"});
+            this.cb_TipoPlano.Location = new System.Drawing.Point(500, 160);
+            this.cb_TipoPlano.Name = "cb_TipoPlano";
+            this.cb_TipoPlano.Size = new System.Drawing.Size(121, 21);
+            this.cb_TipoPlano.TabIndex = 14;
+            // 
+            // dtp_DataNascimentoUser
+            // 
+            this.dtp_DataNascimentoUser.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_DataNascimentoUser.Location = new System.Drawing.Point(500, 51);
+            this.dtp_DataNascimentoUser.Name = "dtp_DataNascimentoUser";
+            this.dtp_DataNascimentoUser.Size = new System.Drawing.Size(109, 20);
+            this.dtp_DataNascimentoUser.TabIndex = 15;
+            // 
+            // txtIdUsuario
+            // 
+            this.txtIdUsuario.Location = new System.Drawing.Point(702, 51);
+            this.txtIdUsuario.Name = "txtIdUsuario";
+            this.txtIdUsuario.ReadOnly = true;
+            this.txtIdUsuario.Size = new System.Drawing.Size(62, 20);
+            this.txtIdUsuario.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(699, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Id Usuário";
             // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLimparUsuario);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtIdUsuario);
+            this.Controls.Add(this.dtp_DataNascimentoUser);
+            this.Controls.Add(this.cb_TipoPlano);
             this.Controls.Add(this.btnCadastroUsuario);
-            this.Controls.Add(this.txtDataNascUsuario);
-            this.Controls.Add(this.txtPlanoUsuario);
             this.Controls.Add(this.txtEmailUsuario);
             this.Controls.Add(this.txtSenhaUsuario);
-            this.Controls.Add(this.txtNickname);
+            this.Controls.Add(this.txtNomeUsuario);
             this.Controls.Add(this.txtNomeCompletoUser);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -193,12 +213,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNomeCompletoUser;
-        private System.Windows.Forms.TextBox txtNickname;
+        private System.Windows.Forms.TextBox txtNomeUsuario;
         private System.Windows.Forms.TextBox txtSenhaUsuario;
         private System.Windows.Forms.TextBox txtEmailUsuario;
-        private System.Windows.Forms.TextBox txtPlanoUsuario;
-        private System.Windows.Forms.TextBox txtDataNascUsuario;
         private System.Windows.Forms.Button btnCadastroUsuario;
-        private System.Windows.Forms.Button btnLimparUsuario;
+        private System.Windows.Forms.ComboBox cb_TipoPlano;
+        private System.Windows.Forms.DateTimePicker dtp_DataNascimentoUser;
+        private System.Windows.Forms.TextBox txtIdUsuario;
+        private System.Windows.Forms.Label label7;
     }
 }

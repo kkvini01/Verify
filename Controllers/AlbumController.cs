@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System;
 
-namespace Verify.Controls
+namespace Verify.Controllers
 {
     public class AlbumController
     {
@@ -15,14 +15,15 @@ namespace Verify.Controls
         {
             // Criar o comando SQL que será executado
             string query =
-                "INSERT INTO album (id_artista, data_lancamento_album, gravadora, capa_url, duracao_total, tipo_album, numero_faixas) " +
-                "VALUES (@id_artista, @data_lancamento_album, @gravadora, @capa_url, @duracao_total, @tipo_album, @numero_faixas)";
+                "INSERT INTO album (id_artista, nome_album, data_lancamento_album, gravadora, capa_url, duracao_total, tipo_album, numero_faixas) " +
+                "VALUES (@id_artista, @nome_album, @data_lancamento_album, @gravadora, @capa_url, @duracao_total, @tipo_album, @numero_faixas)";
 
             // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
             // Definir os valores dos parâmetros
-            command.Parameters.AddWithValue("@id_artista", album.IdArtista);
+            command.Parameters.AddWithValue("@id_artista", album.IdArtista.IdArtista);
+            command.Parameters.AddWithValue("@nome_album", album.NomeAlbum);
             command.Parameters.AddWithValue("@data_lancamento_album", album.DataLancamentoAlbum);
             command.Parameters.AddWithValue("@gravadora", album.Gravadora);
             command.Parameters.AddWithValue("@capa_url", album.CapaUrl);
@@ -41,6 +42,7 @@ namespace Verify.Controls
             string query =
                 "UPDATE album SET " +
                 "id_artista = @id_artista, " +
+                "nome_album = @nome_album, " +
                 "data_lancamento_album = @data_lancamento_album, " +
                 "gravadora = @gravadora, " +
                 "capa_url = @capa_url, " +
@@ -53,7 +55,8 @@ namespace Verify.Controls
             SqlCommand command = new SqlCommand(query);
 
             // Definir os parâmetros
-            command.Parameters.AddWithValue("@id_artista", album.IdArtista);
+            command.Parameters.AddWithValue("@id_artista", album.IdArtista.IdArtista);
+            command.Parameters.AddWithValue("@nome_album", album.NomeAlbum);
             command.Parameters.AddWithValue("@data_lancamento_album", album.DataLancamentoAlbum);
             command.Parameters.AddWithValue("@gravadora", album.Gravadora);
             command.Parameters.AddWithValue("@capa_url", album.CapaUrl);
@@ -109,12 +112,13 @@ namespace Verify.Controls
 
                 // Mapear os dados do SQL para o objeto
                 album.IdAlbum = (int)dataTable.Rows[0]["id_album"];
+                album.NomeAlbum = (string)dataTable.Rows[0]["nome_album"];
                 album.IdArtista = new Artista();
                 album.IdArtista.IdArtista = (int)dataTable.Rows[0]["id_artista"];
                 album.DataLancamentoAlbum = (DateTime)dataTable.Rows[0]["data_lancamento_album"];
                 album.Gravadora = (string)dataTable.Rows[0]["gravadora"];
                 album.CapaUrl = (string)dataTable.Rows[0]["capa_url"];
-                album.DuracaoTotalAlbum = (int)dataTable.Rows[0]["duracao_total"];
+                album.DuracaoTotalAlbum = (string)dataTable.Rows[0]["duracao_total"];
                 album.TipoAlbum = (string)dataTable.Rows[0]["tipo_album"];
                 album.NumeroFaixas = (int)dataTable.Rows[0]["numero_faixas"];
 
@@ -127,7 +131,7 @@ namespace Verify.Controls
                 return null;
             }
         }
-
+  
         // Função pública para consultar álbuns com filtro
         public AlbumCollection GetByFilters(
             string campo = "", string filtro = "")
@@ -163,12 +167,13 @@ namespace Verify.Controls
 
                 // Mapear os dados do SQL para o objeto
                 album.IdAlbum = (int)row["id_album"];
+                album.NomeAlbum = (string)dataTable.Rows[0]["nome_album"];
                 album.IdArtista = new Artista();
                 album.IdArtista.IdArtista = (int)row["id_artista"];
                 album.DataLancamentoAlbum = (DateTime)row["data_lancamento_album"];
                 album.Gravadora = (string)row["gravadora"];
                 album.CapaUrl = (string)row["capa_url"];
-                album.DuracaoTotalAlbum = (int)row["duracao_total"];
+                album.DuracaoTotalAlbum = (string)row["duracao_total"];
                 album.TipoAlbum = (string)row["tipo_album"];
                 album.NumeroFaixas = (int)row["numero_faixas"];
 
@@ -187,10 +192,22 @@ namespace Verify.Controls
             return GetByFilters();
         }
 
-        // Função para consultar álbuns por gravadora
-        public AlbumCollection GetByGravadora(string valor)
+        // Função para retornar o Id album
+        public AlbumCollection GetByIdAlbum(int valor)
         {
-            return GetByFilters("gravadora", valor);
+            return GetByFilters("id_album", valor.ToString());
+        }
+
+        // Função para retornar o Id artista
+        public AlbumCollection GetByIdArtistaAlbum(int valor)
+        {
+            return GetByFilters("id_artista", valor.ToString());
+        }
+
+        // Função para retornar o nome do album boomshakala
+        public AlbumCollection GetByNomeAlbum(string valor)
+        {
+            return GetByFilters("nome_album", valor);
         }
 
         // Função para consultar álbuns por tipo

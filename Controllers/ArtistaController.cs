@@ -197,6 +197,10 @@ namespace Verify.Controllers
             return GetByFilters();
         }
 
+        public ArtistaCollection GetByIdArtista(int id)
+        {
+            return GetByFilters("ID_ARTISTA", id.ToString());
+        }
         // Função para filtrar artistas pelo nome artístico
         public ArtistaCollection GetByName(string value)
         {

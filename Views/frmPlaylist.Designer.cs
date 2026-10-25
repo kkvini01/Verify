@@ -32,14 +32,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.btnPublico = new System.Windows.Forms.Button();
-            this.btnPrivado = new System.Windows.Forms.Button();
+            this.txtNomePlaylist = new System.Windows.Forms.TextBox();
+            this.txtDescricaoPlaylist = new System.Windows.Forms.TextBox();
             this.btnCadastrarPlaylist = new System.Windows.Forms.Button();
-            this.btnLimparPlaylist = new System.Windows.Forms.Button();
+            this.dtp_Atualizacao = new System.Windows.Forms.DateTimePicker();
+            this.dtp_Criacao = new System.Windows.Forms.DateTimePicker();
+            this.cbPrivacidade = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtQtdLikes = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdPlaylist = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbIdUsuarioPlaylist = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -78,84 +83,135 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Data Criação";
             // 
-            // textBox1
+            // txtNomePlaylist
             // 
-            this.textBox1.Location = new System.Drawing.Point(578, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtNomePlaylist.Location = new System.Drawing.Point(578, 48);
+            this.txtNomePlaylist.Name = "txtNomePlaylist";
+            this.txtNomePlaylist.Size = new System.Drawing.Size(197, 20);
+            this.txtNomePlaylist.TabIndex = 4;
             // 
-            // textBox2
+            // txtDescricaoPlaylist
             // 
-            this.textBox2.Location = new System.Drawing.Point(578, 121);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(197, 103);
-            this.textBox2.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(663, 306);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(663, 396);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
-            // 
-            // btnPublico
-            // 
-            this.btnPublico.Location = new System.Drawing.Point(12, 90);
-            this.btnPublico.Name = "btnPublico";
-            this.btnPublico.Size = new System.Drawing.Size(104, 42);
-            this.btnPublico.TabIndex = 8;
-            this.btnPublico.Text = "Publico";
-            this.btnPublico.UseVisualStyleBackColor = true;
-            // 
-            // btnPrivado
-            // 
-            this.btnPrivado.Location = new System.Drawing.Point(139, 91);
-            this.btnPrivado.Name = "btnPrivado";
-            this.btnPrivado.Size = new System.Drawing.Size(101, 41);
-            this.btnPrivado.TabIndex = 9;
-            this.btnPrivado.Text = "Privado";
-            this.btnPrivado.UseVisualStyleBackColor = true;
+            this.txtDescricaoPlaylist.Location = new System.Drawing.Point(578, 121);
+            this.txtDescricaoPlaylist.Multiline = true;
+            this.txtDescricaoPlaylist.Name = "txtDescricaoPlaylist";
+            this.txtDescricaoPlaylist.Size = new System.Drawing.Size(197, 103);
+            this.txtDescricaoPlaylist.TabIndex = 5;
             // 
             // btnCadastrarPlaylist
             // 
-            this.btnCadastrarPlaylist.Location = new System.Drawing.Point(12, 306);
+            this.btnCadastrarPlaylist.Location = new System.Drawing.Point(10, 366);
             this.btnCadastrarPlaylist.Name = "btnCadastrarPlaylist";
-            this.btnCadastrarPlaylist.Size = new System.Drawing.Size(106, 41);
+            this.btnCadastrarPlaylist.Size = new System.Drawing.Size(104, 41);
             this.btnCadastrarPlaylist.TabIndex = 10;
             this.btnCadastrarPlaylist.Text = "Cadastrar";
             this.btnCadastrarPlaylist.UseVisualStyleBackColor = true;
+            this.btnCadastrarPlaylist.Click += new System.EventHandler(this.btnCadastrarPlaylist_Click);
             // 
-            // btnLimparPlaylist
+            // dtp_Atualizacao
             // 
-            this.btnLimparPlaylist.Location = new System.Drawing.Point(139, 306);
-            this.btnLimparPlaylist.Name = "btnLimparPlaylist";
-            this.btnLimparPlaylist.Size = new System.Drawing.Size(101, 41);
-            this.btnLimparPlaylist.TabIndex = 11;
-            this.btnLimparPlaylist.Text = "Limpar";
-            this.btnLimparPlaylist.UseVisualStyleBackColor = true;
+            this.dtp_Atualizacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Atualizacao.Location = new System.Drawing.Point(656, 306);
+            this.dtp_Atualizacao.Name = "dtp_Atualizacao";
+            this.dtp_Atualizacao.Size = new System.Drawing.Size(107, 20);
+            this.dtp_Atualizacao.TabIndex = 13;
+            // 
+            // dtp_Criacao
+            // 
+            this.dtp_Criacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_Criacao.Location = new System.Drawing.Point(656, 396);
+            this.dtp_Criacao.Name = "dtp_Criacao";
+            this.dtp_Criacao.Size = new System.Drawing.Size(107, 20);
+            this.dtp_Criacao.TabIndex = 14;
+            // 
+            // cbPrivacidade
+            // 
+            this.cbPrivacidade.FormattingEnabled = true;
+            this.cbPrivacidade.Items.AddRange(new object[] {
+            "Publico",
+            "Privado"});
+            this.cbPrivacidade.Location = new System.Drawing.Point(12, 95);
+            this.cbPrivacidade.Name = "cbPrivacidade";
+            this.cbPrivacidade.Size = new System.Drawing.Size(121, 21);
+            this.cbPrivacidade.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Privacidade:";
+            // 
+            // txtQtdLikes
+            // 
+            this.txtQtdLikes.Location = new System.Drawing.Point(423, 204);
+            this.txtQtdLikes.Name = "txtQtdLikes";
+            this.txtQtdLikes.Size = new System.Drawing.Size(105, 20);
+            this.txtQtdLikes.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(420, 183);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Quantidade de Likes:";
+            // 
+            // txtIdPlaylist
+            // 
+            this.txtIdPlaylist.Location = new System.Drawing.Point(12, 30);
+            this.txtIdPlaylist.Name = "txtIdPlaylist";
+            this.txtIdPlaylist.ReadOnly = true;
+            this.txtIdPlaylist.Size = new System.Drawing.Size(48, 20);
+            this.txtIdPlaylist.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Id Playlist";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(82, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Id Usuario";
+            // 
+            // cbIdUsuarioPlaylist
+            // 
+            this.cbIdUsuarioPlaylist.FormattingEnabled = true;
+            this.cbIdUsuarioPlaylist.Location = new System.Drawing.Point(85, 29);
+            this.cbIdUsuarioPlaylist.Name = "cbIdUsuarioPlaylist";
+            this.cbIdUsuarioPlaylist.Size = new System.Drawing.Size(48, 21);
+            this.cbIdUsuarioPlaylist.TabIndex = 25;
             // 
             // frmPlaylist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLimparPlaylist);
+            this.Controls.Add(this.cbIdUsuarioPlaylist);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtIdPlaylist);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtQtdLikes);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbPrivacidade);
+            this.Controls.Add(this.dtp_Criacao);
+            this.Controls.Add(this.dtp_Atualizacao);
             this.Controls.Add(this.btnCadastrarPlaylist);
-            this.Controls.Add(this.btnPrivado);
-            this.Controls.Add(this.btnPublico);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescricaoPlaylist);
+            this.Controls.Add(this.txtNomePlaylist);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -173,13 +229,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button btnPublico;
-        private System.Windows.Forms.Button btnPrivado;
+        private System.Windows.Forms.TextBox txtNomePlaylist;
+        private System.Windows.Forms.TextBox txtDescricaoPlaylist;
         private System.Windows.Forms.Button btnCadastrarPlaylist;
-        private System.Windows.Forms.Button btnLimparPlaylist;
+        private System.Windows.Forms.DateTimePicker dtp_Atualizacao;
+        private System.Windows.Forms.DateTimePicker dtp_Criacao;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtQtdLikes;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbPrivacidade;
+        private System.Windows.Forms.TextBox txtIdPlaylist;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbIdUsuarioPlaylist;
     }
 }

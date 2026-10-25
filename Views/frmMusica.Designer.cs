@@ -32,16 +32,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTituloMusica = new System.Windows.Forms.TextBox();
+            this.txtNomeCompositor = new System.Windows.Forms.TextBox();
+            this.txtNumReprod = new System.Windows.Forms.TextBox();
             this.btnCadastrarMusica = new System.Windows.Forms.Button();
-            this.btnLimparMusica = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtGeneroMusical = new System.Windows.Forms.TextBox();
+            this.dtpDataLancamentoMusica = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtIdMusica = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbIdAlbumMusica = new System.Windows.Forms.ComboBox();
+            this.cbIdArtistaMusica = new System.Windows.Forms.ComboBox();
+            this.txtDuracaoSegundos = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -56,11 +61,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(222, 67);
+            this.label2.Location = new System.Drawing.Point(232, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Duração da Musica";
+            this.label2.Text = "Duração Musica";
             // 
             // label3
             // 
@@ -80,52 +85,37 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Titulo Musica";
             // 
-            // textBox1
+            // txtTituloMusica
             // 
-            this.textBox1.Location = new System.Drawing.Point(569, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 55);
-            this.textBox1.TabIndex = 4;
+            this.txtTituloMusica.Location = new System.Drawing.Point(569, 25);
+            this.txtTituloMusica.Multiline = true;
+            this.txtTituloMusica.Name = "txtTituloMusica";
+            this.txtTituloMusica.Size = new System.Drawing.Size(200, 21);
+            this.txtTituloMusica.TabIndex = 4;
             // 
-            // textBox2
+            // txtNomeCompositor
             // 
-            this.textBox2.Location = new System.Drawing.Point(64, 110);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtNomeCompositor.Location = new System.Drawing.Point(64, 95);
+            this.txtNomeCompositor.Name = "txtNomeCompositor";
+            this.txtNomeCompositor.Size = new System.Drawing.Size(100, 20);
+            this.txtNomeCompositor.TabIndex = 5;
             // 
-            // textBox3
+            // txtNumReprod
             // 
-            this.textBox3.Location = new System.Drawing.Point(225, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(386, 110);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
+            this.txtNumReprod.Location = new System.Drawing.Point(386, 95);
+            this.txtNumReprod.Name = "txtNumReprod";
+            this.txtNumReprod.Size = new System.Drawing.Size(100, 20);
+            this.txtNumReprod.TabIndex = 7;
             // 
             // btnCadastrarMusica
             // 
-            this.btnCadastrarMusica.Location = new System.Drawing.Point(35, 310);
+            this.btnCadastrarMusica.Location = new System.Drawing.Point(23, 370);
             this.btnCadastrarMusica.Name = "btnCadastrarMusica";
             this.btnCadastrarMusica.Size = new System.Drawing.Size(97, 34);
             this.btnCadastrarMusica.TabIndex = 8;
             this.btnCadastrarMusica.Text = "Cadastrar";
             this.btnCadastrarMusica.UseVisualStyleBackColor = true;
-            // 
-            // btnLimparMusica
-            // 
-            this.btnLimparMusica.Location = new System.Drawing.Point(35, 367);
-            this.btnLimparMusica.Name = "btnLimparMusica";
-            this.btnLimparMusica.Size = new System.Drawing.Size(97, 35);
-            this.btnLimparMusica.TabIndex = 9;
-            this.btnLimparMusica.Text = "Limpar";
-            this.btnLimparMusica.UseVisualStyleBackColor = true;
+            this.btnCadastrarMusica.Click += new System.EventHandler(this.btnCadastrarMusica_Click_1);
             // 
             // label5
             // 
@@ -145,37 +135,101 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Genero Musical";
             // 
-            // textBox5
+            // txtGeneroMusical
             // 
-            this.textBox5.Location = new System.Drawing.Point(352, 375);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(134, 45);
-            this.textBox5.TabIndex = 12;
+            this.txtGeneroMusical.Location = new System.Drawing.Point(352, 375);
+            this.txtGeneroMusical.Multiline = true;
+            this.txtGeneroMusical.Name = "txtGeneroMusical";
+            this.txtGeneroMusical.Size = new System.Drawing.Size(134, 27);
+            this.txtGeneroMusical.TabIndex = 12;
             // 
-            // textBox6
+            // dtpDataLancamentoMusica
             // 
-            this.textBox6.Location = new System.Drawing.Point(614, 375);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(123, 45);
-            this.textBox6.TabIndex = 13;
+            this.dtpDataLancamentoMusica.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataLancamentoMusica.Location = new System.Drawing.Point(614, 375);
+            this.dtpDataLancamentoMusica.Name = "dtpDataLancamentoMusica";
+            this.dtpDataLancamentoMusica.Size = new System.Drawing.Size(107, 20);
+            this.dtpDataLancamentoMusica.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Id Musica";
+            // 
+            // txtIdMusica
+            // 
+            this.txtIdMusica.Location = new System.Drawing.Point(12, 26);
+            this.txtIdMusica.Name = "txtIdMusica";
+            this.txtIdMusica.ReadOnly = true;
+            this.txtIdMusica.Size = new System.Drawing.Size(45, 20);
+            this.txtIdMusica.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(134, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Id Artista";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(72, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 13);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Id Album";
+            // 
+            // cbIdAlbumMusica
+            // 
+            this.cbIdAlbumMusica.FormattingEnabled = true;
+            this.cbIdAlbumMusica.Location = new System.Drawing.Point(75, 26);
+            this.cbIdAlbumMusica.Name = "cbIdAlbumMusica";
+            this.cbIdAlbumMusica.Size = new System.Drawing.Size(45, 21);
+            this.cbIdAlbumMusica.TabIndex = 30;
+            // 
+            // cbIdArtistaMusica
+            // 
+            this.cbIdArtistaMusica.FormattingEnabled = true;
+            this.cbIdArtistaMusica.Location = new System.Drawing.Point(137, 26);
+            this.cbIdArtistaMusica.Name = "cbIdArtistaMusica";
+            this.cbIdArtistaMusica.Size = new System.Drawing.Size(45, 21);
+            this.cbIdArtistaMusica.TabIndex = 31;
+            // 
+            // txtDuracaoSegundos
+            // 
+            this.txtDuracaoSegundos.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.txtDuracaoSegundos.Location = new System.Drawing.Point(224, 95);
+            this.txtDuracaoSegundos.Name = "txtDuracaoSegundos";
+            this.txtDuracaoSegundos.Size = new System.Drawing.Size(109, 20);
+            this.txtDuracaoSegundos.TabIndex = 33;
             // 
             // frmMusica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtDuracaoSegundos);
+            this.Controls.Add(this.cbIdArtistaMusica);
+            this.Controls.Add(this.cbIdAlbumMusica);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtIdMusica);
+            this.Controls.Add(this.dtpDataLancamentoMusica);
+            this.Controls.Add(this.txtGeneroMusical);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnLimparMusica);
             this.Controls.Add(this.btnCadastrarMusica);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNumReprod);
+            this.Controls.Add(this.txtNomeCompositor);
+            this.Controls.Add(this.txtTituloMusica);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -193,15 +247,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTituloMusica;
+        private System.Windows.Forms.TextBox txtNomeCompositor;
+        private System.Windows.Forms.TextBox txtNumReprod;
         private System.Windows.Forms.Button btnCadastrarMusica;
-        private System.Windows.Forms.Button btnLimparMusica;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtGeneroMusical;
+        private System.Windows.Forms.DateTimePicker dtpDataLancamentoMusica;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtIdMusica;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbIdAlbumMusica;
+        private System.Windows.Forms.ComboBox cbIdArtistaMusica;
+        private System.Windows.Forms.DateTimePicker txtDuracaoSegundos;
     }
 }

@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System;
 
-namespace Verify.Controls
+namespace Verify.Controllers
 {
     public class PlaylistController
     {
@@ -29,10 +29,10 @@ namespace Verify.Controls
 
             // Definir os valores dos parâmetros
             command.Parameters.AddWithValue("@id_usuario", playlist.IdUsuario.IdUsuario);
-            command.Parameters.AddWithValue("@nome_playlist", playlist.NomePlayist);
-            command.Parameters.AddWithValue("@descricao", playlist.DescPlayist);
-            command.Parameters.AddWithValue("@dat_criacao", playlist.CriacaoPlayist);
-            command.Parameters.AddWithValue("@dat_atualizacao", playlist.AtualizacaoPlayist);
+            command.Parameters.AddWithValue("@nome_playlist", playlist.NomePlaylist);
+            command.Parameters.AddWithValue("@descricao", playlist.DescPlaylist);
+            command.Parameters.AddWithValue("@dat_criacao", playlist.CriacaoPlaylist);
+            command.Parameters.AddWithValue("@dat_atualizacao", playlist.AtualizacaoPlaylist);
             command.Parameters.AddWithValue("@publica", publica);
             command.Parameters.AddWithValue("@qtd_likes", playlist.QtdLikes);
 
@@ -66,13 +66,13 @@ namespace Verify.Controls
 
             // Definir os parâmetros
             command.Parameters.AddWithValue("@id_usuario", playlist.IdUsuario.IdUsuario);
-            command.Parameters.AddWithValue("@nome_playlist", playlist.NomePlayist);
-            command.Parameters.AddWithValue("@descricao", playlist.DescPlayist);
-            command.Parameters.AddWithValue("@dat_criacao", playlist.CriacaoPlayist);
-            command.Parameters.AddWithValue("@dat_atualizacao", playlist.AtualizacaoPlayist);
+            command.Parameters.AddWithValue("@nome_playlist", playlist.NomePlaylist);
+            command.Parameters.AddWithValue("@descricao", playlist.DescPlaylist);
+            command.Parameters.AddWithValue("@dat_criacao", playlist.CriacaoPlaylist);
+            command.Parameters.AddWithValue("@dat_atualizacao", playlist.AtualizacaoPlaylist);
             command.Parameters.AddWithValue("@publica", publica);
             command.Parameters.AddWithValue("@qtd_likes", playlist.QtdLikes);
-            command.Parameters.AddWithValue("@id_playlist", playlist.IdPlayist);
+            command.Parameters.AddWithValue("@id_playlist", playlist.IdPlaylist);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
@@ -120,15 +120,15 @@ namespace Verify.Controls
                 Playlist playlist = new Playlist();
 
                 // Mapear os dados do SQL para o objeto
-                playlist.IdPlayist = (int)dataTable.Rows[0]["id_playlist"];
+                playlist.IdPlaylist = (int)dataTable.Rows[0]["id_playlist"];
 
                 playlist.IdUsuario = new Usuario();
                 playlist.IdUsuario.IdUsuario = (int)dataTable.Rows[0]["id_usuario"];
 
-                playlist.NomePlayist = (string)dataTable.Rows[0]["nome_playlist"];
-                playlist.DescPlayist = (string)dataTable.Rows[0]["descricao"];
-                playlist.CriacaoPlayist = (DateTime)dataTable.Rows[0]["dat_criacao"];
-                playlist.AtualizacaoPlayist = (DateTime)dataTable.Rows[0]["dat_atualizacao"];
+                playlist.NomePlaylist = (string)dataTable.Rows[0]["nome_playlist"];
+                playlist.DescPlaylist = (string)dataTable.Rows[0]["descricao"];
+                playlist.CriacaoPlaylist = (DateTime)dataTable.Rows[0]["dat_criacao"];
+                playlist.AtualizacaoPlaylist = (DateTime)dataTable.Rows[0]["dat_atualizacao"];
 
                 // Converter o inteiro do SQL para texto
                 if ((int)dataTable.Rows[0]["publica"] == 1)
@@ -182,15 +182,15 @@ namespace Verify.Controls
                 Playlist playlist = new Playlist();
 
                 // Mapear os dados do SQL para o objeto
-                playlist.IdPlayist = (int)row["id_playlist"];
+                playlist.IdPlaylist = (int)row["id_playlist"];
 
                 playlist.IdUsuario = new Usuario();
                 playlist.IdUsuario.IdUsuario = (int)row["id_usuario"];
 
-                playlist.NomePlayist = (string)row["nome_playlist"];
-                playlist.DescPlayist = (string)row["descricao"];
-                playlist.CriacaoPlayist = (DateTime)row["dat_criacao"];
-                playlist.AtualizacaoPlayist = (DateTime)row["dat_atualizacao"];
+                playlist.NomePlaylist = (string)row["nome_playlist"];
+                playlist.DescPlaylist = (string)row["descricao"];
+                playlist.CriacaoPlaylist = (DateTime)row["dat_criacao"];
+                playlist.AtualizacaoPlaylist = (DateTime)row["dat_atualizacao"];
 
                 // Converter o inteiro do SQL para texto
                 if ((int)row["publica"] == 1)
@@ -220,11 +220,13 @@ namespace Verify.Controls
         {
             return GetByFilters("nome_playlist", valor);
         }
-
-        // Função para consultar playlists pela descrição
-        public PlaylistCollection GetByDescricao(string valor)
+        public PlaylistCollection GetByIdUsuario(int idUsuario)
         {
-            return GetByFilters("descricao", valor);
+            return GetByFilters("id_usuario", idUsuario.ToString());
+        }
+        public PlaylistCollection GetByIdPlaylist(int idPlaylist)
+        {
+            return GetByFilters("id_playlist", idPlaylist.ToString());
         }
     }
 }
