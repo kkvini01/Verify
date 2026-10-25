@@ -29,32 +29,28 @@ namespace Verify.Views
             // Pesquisar pelo código do álbum
             if (!string.IsNullOrEmpty(txtIdAlbumSelecao.Text.Trim()))
             {
-                AlbumCollection retorno = controller.GetByIdAlbum(
-                    int.Parse(txtIdAlbumSelecao.Text)
-                );
-
-                dgvRegistrosAlbumSelecao.DataSource = retorno;
+                dgvRegistrosAlbumSelecao.DataSource =
+                    controller.GetByIdAlbum(
+                        int.Parse(txtIdAlbumSelecao.Text.Trim()));
             }
             // Pesquisar pelo nome do álbum
             else if (!string.IsNullOrEmpty(txtNomeAlbumSelecao.Text.Trim()))
             {
                 dgvRegistrosAlbumSelecao.DataSource =
-                    controller.GetByNomeAlbum(txtNomeAlbumSelecao.Text);
+                    controller.GetByNomeAlbum(txtNomeAlbumSelecao.Text.Trim());
             }
             // Pesquisar pelo ID do artista
             else if (!string.IsNullOrEmpty(txtIdArtistaAlbum.Text.Trim()))
-            {   
-                AlbumCollection retorno = controller.GetByIdArtistaAlbum(
-                    int.Parse(txtIdArtistaAlbum.Text)
-                );
-
-                dgvRegistrosAlbumSelecao.DataSource = retorno;
+            {
+                dgvRegistrosAlbumSelecao.DataSource =
+                    controller.GetByIdArtistaAlbum(
+                        int.Parse(txtIdArtistaAlbum.Text.Trim()));
             }
             // Pesquisar pelo tipo do álbum
             else if (!string.IsNullOrEmpty(txtTipoAlbumSelecao.Text.Trim()))
             {
                 dgvRegistrosAlbumSelecao.DataSource =
-                    controller.GetByTipoAlbum(txtTipoAlbumSelecao.Text);
+                    controller.GetByTipoAlbum(txtTipoAlbumSelecao.Text.Trim());
             }
             // Caso nenhum filtro seja informado, buscar todos
             else
@@ -62,16 +58,9 @@ namespace Verify.Views
                 dgvRegistrosAlbumSelecao.DataSource = controller.GetAll();
             }
 
-            // Configurar a grade
-            dgvRegistrosAlbumSelecao.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
-
-            dgvRegistrosAlbumSelecao.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
-
-            dgvRegistrosAlbumSelecao.MultiSelect = false;
-            dgvRegistrosAlbumSelecao.ReadOnly = true;
+            OcultarColunas();
         }
+
         void OcultarColunas()
         {
             dgvRegistrosAlbumSelecao.Columns["IdArtista"].Visible = false;
@@ -114,7 +103,7 @@ namespace Verify.Views
                     }
                     else
                     {
-                        MessageBox.Show("Não foi possível excluir o álbum.");
+                        MessageBox.Show("Não foi possível excluir o álbum, ele está sendo utilizado.");
                     }
                 }
             }
@@ -140,6 +129,7 @@ namespace Verify.Views
             // Atualizar a grade após o cadastro
             if (frm.ShowDialog() == DialogResult.OK)
                 Pesquisar();
+                OcultarColunas();
         }
 
         private void btnAlterarAlbumSelecao_Click_1(object sender, EventArgs e)
@@ -155,6 +145,7 @@ namespace Verify.Views
                 // Atualizar a grade após a alteração
                 if (frm.ShowDialog() == DialogResult.OK)
                     Pesquisar();
+                    OcultarColunas();
             }
         }
 

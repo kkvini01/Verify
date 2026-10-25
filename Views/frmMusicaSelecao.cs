@@ -48,7 +48,7 @@ namespace Verify.Views
                 // Vincular a coleção à grade
                 dgvRegistrosMusicaSelecao.DataSource = musicas;
             }
-            // Pesquisar pelo título
+
             else if (!string.IsNullOrEmpty(
                 txtTituloMusicaSelecao.Text.Trim()))
             {
@@ -57,13 +57,19 @@ namespace Verify.Views
                         txtTituloMusicaSelecao.Text.Trim());
             }
             else if (!string.IsNullOrEmpty(
-                txtIdArtistaMusica.Text.Trim()))
+                txtIdMusicaSelecao.Text.Trim()))
             {
                 dgvRegistrosMusicaSelecao.DataSource =
                     controller.GetByIdMusica(
                         int.Parse(txtIdMusicaSelecao.Text.Trim()));
             }
-            // Pesquisar pelo ID do artista
+            else if (!string.IsNullOrEmpty(
+                txtIdAlbumMusicaSelecao.Text.Trim()))
+            {
+                dgvRegistrosMusicaSelecao.DataSource =
+                    controller.GetByIdAlbum(
+                        int.Parse(txtIdAlbumMusicaSelecao.Text.Trim()));
+            }
             else if (!string.IsNullOrEmpty(
                 txtIdArtistaMusica.Text.Trim()))
             {
@@ -71,7 +77,6 @@ namespace Verify.Views
                     controller.GetByIdArtista(
                         int.Parse(txtIdArtistaMusica.Text.Trim()));
             }
-            // Pesquisar pelo compositor
             else if (!string.IsNullOrEmpty(
                 txtCompositorMusicaSelecao.Text.Trim()))
             {
@@ -79,12 +84,15 @@ namespace Verify.Views
                     controller.GetByCompositor(
                         txtCompositorMusicaSelecao.Text.Trim());
             }
-            // Caso nenhum filtro seja informado, retornar todas
             else
             {
                 dgvRegistrosMusicaSelecao.DataSource =
                     controller.GetAll();
             }
+
+            OcultarColunas();
+
+
         }
         //Método para esconder colunas que não devem ser exibidas na grade
         void OcultarColunas()
@@ -139,7 +147,7 @@ namespace Verify.Views
                     else
                     {
                         MessageBox.Show(
-                            "Não foi possível excluir o registro.");
+                            "Não foi possível excluir o registro, ele está sendo utilizado.");
                     }
                 }
             }
@@ -167,6 +175,7 @@ namespace Verify.Views
             // Atualizar a grade se o cadastro for concluído
             if (frm.ShowDialog() == DialogResult.OK)
                 Pesquisar();
+                OcultarColunas();
         }
 
         private void btnAlterarMusicaSelecao_Click_1(object sender, EventArgs e)
@@ -182,6 +191,7 @@ namespace Verify.Views
                 // Atualizar a grade se a alteração for concluída
                 if (frm.ShowDialog() == DialogResult.OK)
                     Pesquisar();
+                    OcultarColunas();
             }
         }
 
@@ -193,6 +203,11 @@ namespace Verify.Views
         private void btnPesquisarMusicaSelecao_Click_1(object sender, EventArgs e)
         {
             Pesquisar();
+        }
+
+        private void txtCompositorMusicaSelecao_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

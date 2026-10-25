@@ -117,7 +117,7 @@ namespace Verify.Views
                         Pesquisar();
                     }
                     else
-                        MessageBox.Show("Não foi possível excluir o registro.");
+                        MessageBox.Show("Não foi possível excluir o registro, ele está sendo utilizado.");
                 }
             }
         }

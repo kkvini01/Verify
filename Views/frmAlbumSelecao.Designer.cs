@@ -35,7 +35,7 @@
             this.lblRegistrosAlbumSelecao = new System.Windows.Forms.Label();
             this.dgvRegistrosAlbumSelecao = new System.Windows.Forms.DataGridView();
             this.btnPesquisarAlbumSelecao = new System.Windows.Forms.Button();
-            this.txtCompositorSelecao = new System.Windows.Forms.Label();
+            this.labl34 = new System.Windows.Forms.Label();
             this.txtTipoAlbumSelecao = new System.Windows.Forms.TextBox();
             this.txtIdArtistaAlbum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -125,14 +125,14 @@
             this.btnPesquisarAlbumSelecao.UseVisualStyleBackColor = true;
             this.btnPesquisarAlbumSelecao.Click += new System.EventHandler(this.btnPesquisarAlbumSelecao_Click);
             // 
-            // txtCompositorSelecao
+            // labl34
             // 
-            this.txtCompositorSelecao.AutoSize = true;
-            this.txtCompositorSelecao.Location = new System.Drawing.Point(427, 12);
-            this.txtCompositorSelecao.Name = "txtCompositorSelecao";
-            this.txtCompositorSelecao.Size = new System.Drawing.Size(62, 13);
-            this.txtCompositorSelecao.TabIndex = 70;
-            this.txtCompositorSelecao.Text = "Compositor:";
+            this.labl34.AutoSize = true;
+            this.labl34.Location = new System.Drawing.Point(427, 12);
+            this.labl34.Name = "labl34";
+            this.labl34.Size = new System.Drawing.Size(63, 13);
+            this.labl34.TabIndex = 70;
+            this.labl34.Text = "Tipo Album:";
             // 
             // txtTipoAlbumSelecao
             // 
@@ -143,8 +143,6 @@
             // 
             // txtIdArtistaAlbum
             // 
-            this.txtIdArtistaAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIdArtistaAlbum.Location = new System.Drawing.Point(75, 28);
             this.txtIdArtistaAlbum.Name = "txtIdArtistaAlbum";
             this.txtIdArtistaAlbum.Size = new System.Drawing.Size(82, 20);
@@ -171,9 +169,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(72, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 65;
-            this.label2.Text = "Nome Artista:";
+            this.label2.Text = "Id Artista:";
             // 
             // txtIdAlbumSelecao
             // 
@@ -196,7 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 316);
-            this.Controls.Add(this.txtCompositorSelecao);
+            this.Controls.Add(this.labl34);
             this.Controls.Add(this.txtTipoAlbumSelecao);
             this.Controls.Add(this.txtIdArtistaAlbum);
             this.Controls.Add(this.label3);
@@ -228,7 +226,7 @@
         private System.Windows.Forms.Label lblRegistrosAlbumSelecao;
         private System.Windows.Forms.DataGridView dgvRegistrosAlbumSelecao;
         private System.Windows.Forms.Button btnPesquisarAlbumSelecao;
-        private System.Windows.Forms.Label txtCompositorSelecao;
+        private System.Windows.Forms.Label labl34;
         private System.Windows.Forms.TextBox txtTipoAlbumSelecao;
         private System.Windows.Forms.TextBox txtIdArtistaAlbum;
         private System.Windows.Forms.Label label3;

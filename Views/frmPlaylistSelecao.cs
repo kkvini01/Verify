@@ -72,6 +72,7 @@ namespace Verify.Views
                                 controller.GetById(int.Parse(txtIdPlaylist.Text));
                        else
                             dgvRegistrosPlaylistSelecao.DataSource = controller.GetAll();
+            OcultarColunas();
         }
         void OcultarColunas()
         {
@@ -126,7 +127,7 @@ namespace Verify.Views
                         Pesquisar();
                     }
                     else
-                        MessageBox.Show("Não foi possível excluir o registro.");
+                        MessageBox.Show("Não foi possível excluir o registro, ele está sendo utilizado.");
                 }
             }
         }
@@ -139,6 +140,7 @@ namespace Verify.Views
             //Se foi OK ou Cancel
             if (frm.ShowDialog() == DialogResult.OK)
                 Pesquisar(); //Atualizar a grade com o novo cadastro
+                OcultarColunas();
         }
 
         private void btnVisualizarPlaylistSelecao_Click(object sender, EventArgs e)
@@ -158,6 +160,7 @@ namespace Verify.Views
             //Se foi OK ou Cancel
             if (frm.ShowDialog() == DialogResult.OK)
                 Pesquisar(); //Atualizar a grade com o novo cadastro
+                OcultarColunas();
         }
 
         private void btnExcluirPlaylistSelecao_Click(object sender, EventArgs e)

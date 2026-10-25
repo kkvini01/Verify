@@ -232,5 +232,9 @@ namespace Verify.Controllers
         {
             return GetByFilters("id_artista", valor.ToString());
         }
+        public MusicaCollection GetByIdAlbum(int valor)
+        {
+            return GetByFilters("id_album", valor.ToString());
+        }
     }
 }

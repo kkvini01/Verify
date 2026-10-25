@@ -35,7 +35,7 @@
             this.lblRegistrosMusicaSelecao = new System.Windows.Forms.Label();
             this.dgvRegistrosMusicaSelecao = new System.Windows.Forms.DataGridView();
             this.btnPesquisarMusicaSelecao = new System.Windows.Forms.Button();
-            this.txtIdPlaylistMusica = new System.Windows.Forms.TextBox();
+            this.txtIdAlbumMusicaSelecao = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTituloMusicaSelecao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -129,14 +129,14 @@
             this.btnPesquisarMusicaSelecao.UseVisualStyleBackColor = true;
             this.btnPesquisarMusicaSelecao.Click += new System.EventHandler(this.btnPesquisarMusicaSelecao_Click_1);
             // 
-            // txtIdPlaylistMusica
+            // txtIdAlbumMusicaSelecao
             // 
-            this.txtIdPlaylistMusica.HideSelection = false;
-            this.txtIdPlaylistMusica.Location = new System.Drawing.Point(72, 35);
-            this.txtIdPlaylistMusica.Name = "txtIdPlaylistMusica";
-            this.txtIdPlaylistMusica.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtIdPlaylistMusica.Size = new System.Drawing.Size(57, 20);
-            this.txtIdPlaylistMusica.TabIndex = 58;
+            this.txtIdAlbumMusicaSelecao.HideSelection = false;
+            this.txtIdAlbumMusicaSelecao.Location = new System.Drawing.Point(72, 35);
+            this.txtIdAlbumMusicaSelecao.Name = "txtIdAlbumMusicaSelecao";
+            this.txtIdAlbumMusicaSelecao.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtIdAlbumMusicaSelecao.Size = new System.Drawing.Size(57, 20);
+            this.txtIdAlbumMusicaSelecao.TabIndex = 58;
             // 
             // label3
             // 
@@ -159,9 +159,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(69, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 55;
-            this.label2.Text = "Nome Album:";
+            this.label2.Text = "Id Album:";
             // 
             // txtIdMusicaSelecao
             // 
@@ -185,6 +185,7 @@
             this.txtCompositorMusicaSelecao.Name = "txtCompositorMusicaSelecao";
             this.txtCompositorMusicaSelecao.Size = new System.Drawing.Size(132, 20);
             this.txtCompositorMusicaSelecao.TabIndex = 61;
+            this.txtCompositorMusicaSelecao.TextChanged += new System.EventHandler(this.txtCompositorMusicaSelecao_TextChanged);
             // 
             // txtCompositorSelecao
             // 
@@ -207,9 +208,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(138, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 63;
-            this.label4.Text = "Nome Artista:";
+            this.label4.Text = "Id Artista:";
             // 
             // label5
             // 
@@ -236,7 +237,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCompositorSelecao);
             this.Controls.Add(this.txtCompositorMusicaSelecao);
-            this.Controls.Add(this.txtIdPlaylistMusica);
+            this.Controls.Add(this.txtIdAlbumMusicaSelecao);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTituloMusicaSelecao);
             this.Controls.Add(this.label2);
@@ -266,7 +267,7 @@
         private System.Windows.Forms.Label lblRegistrosMusicaSelecao;
         private System.Windows.Forms.DataGridView dgvRegistrosMusicaSelecao;
         private System.Windows.Forms.Button btnPesquisarMusicaSelecao;
-        private System.Windows.Forms.TextBox txtIdPlaylistMusica;
+        private System.Windows.Forms.TextBox txtIdAlbumMusicaSelecao;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTituloMusicaSelecao;
         private System.Windows.Forms.Label label2;

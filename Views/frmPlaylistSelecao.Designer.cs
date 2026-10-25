@@ -125,8 +125,6 @@
             // 
             // txtIdPlaylist
             // 
-            this.txtIdPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIdPlaylist.Location = new System.Drawing.Point(80, 33);
             this.txtIdPlaylist.Name = "txtIdPlaylist";
             this.txtIdPlaylist.Size = new System.Drawing.Size(57, 20);
