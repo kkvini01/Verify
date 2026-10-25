@@ -69,22 +69,35 @@ namespace Verify.Controllers
         }
 
         // Função pública para excluir um artista
+
         public int Excluir(int id)
         {
+            // Verificar se o artista está vinculado a alguma música
+            string queryVerificar =
+                "SELECT COUNT(*) FROM MUSICA " +
+                "WHERE ID_ARTISTA = @IdArtista";
+
+            SqlCommand commandVerificar = new SqlCommand(queryVerificar);
+            commandVerificar.Parameters.AddWithValue("@IdArtista", id);
+
+            DataTable dataTable = dataBase.GetDataTable(commandVerificar);
+
+            // Se houver músicas vinculadas, não permitir a exclusão
+            if ((int)dataTable.Rows[0][0] > 0)
+                return -1;
+
             // Criar o comando SQL para o DELETE
             string query =
                 "DELETE FROM ARTISTA " +
                 "WHERE ID_ARTISTA = @IdArtista";
 
-            // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
-
-            // Definir o parâmetro
             command.Parameters.AddWithValue("@IdArtista", id);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
+
 
         // Função pública para consultar um artista por ID
         public Artista GetById(int id)

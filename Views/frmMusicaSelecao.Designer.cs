@@ -131,10 +131,10 @@
             // 
             // txtIdPlaylistMusica
             // 
-            this.txtIdPlaylistMusica.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIdPlaylistMusica.HideSelection = false;
             this.txtIdPlaylistMusica.Location = new System.Drawing.Point(72, 35);
             this.txtIdPlaylistMusica.Name = "txtIdPlaylistMusica";
+            this.txtIdPlaylistMusica.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtIdPlaylistMusica.Size = new System.Drawing.Size(57, 20);
             this.txtIdPlaylistMusica.TabIndex = 58;
             // 
@@ -197,8 +197,6 @@
             // 
             // txtIdArtistaMusica
             // 
-            this.txtIdArtistaMusica.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIdArtistaMusica.Location = new System.Drawing.Point(141, 35);
             this.txtIdArtistaMusica.Name = "txtIdArtistaMusica";
             this.txtIdArtistaMusica.Size = new System.Drawing.Size(57, 20);

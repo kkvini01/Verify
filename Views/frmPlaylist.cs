@@ -216,12 +216,18 @@ namespace Verify.Views
 
         private void btnCadastrarPlaylist_Click(object sender, EventArgs e)
         {
+
             if (!VerificarCampos())
             {
                 return;
             }
             else
-                Salvar();
+                if(dtp_Criacao.Value > dtp_Atualizacao.Value)
+                {
+                    MessageBox.Show("A data de criação não pode ser posterior à data de atualização.");
+                }
+                else
+                    Salvar();
         }
     }
 }

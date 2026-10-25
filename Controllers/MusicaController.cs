@@ -35,6 +35,7 @@ namespace Verify.Controllers
             return dataBase.ExecuteSql(command);
         }
 
+
         // Função pública para atualizar uma música
         public int Alterar(Musica musica)
         {
@@ -72,20 +73,36 @@ namespace Verify.Controllers
         // Função pública para excluir uma música
         public int Excluir(int id)
         {
-            // Criar o comando SQL para o DELETE
+            // Verificar se a música está vinculada a alguma playlist
+            string queryVerificar =
+                "SELECT COUNT(*) FROM PLAYLIST_MUSICA " +
+                "WHERE ID_MUSICA = @id_musica";
+
+            SqlCommand commandVerificar = new SqlCommand(queryVerificar);
+
+            commandVerificar.Parameters.AddWithValue("@id_musica", id);
+
+            DataTable dataTable = dataBase.GetDataTable(commandVerificar);
+
+            // Se estiver vinculada, não permitir a exclusão
+            if ((int)dataTable.Rows[0][0] > 0)
+            {
+                return -1;
+            }
+
+            // Criar o comando SQL para excluir a música
             string query =
                 "DELETE FROM musica " +
                 "WHERE id_musica = @id_musica";
 
-            // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
-            // Definir os parâmetros
             command.Parameters.AddWithValue("@id_musica", id);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
+
 
         // Função pública para consultar uma música por ID
         public Musica GetById(int id)

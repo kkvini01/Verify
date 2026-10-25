@@ -38,24 +38,46 @@ namespace Verify.Controllers
         }
 
         // Função pública para remover uma música de uma playlist
+
         public int Excluir(int idPlaylist, int idMusica)
         {
-            // Criar o comando SQL para o DELETE
+            // Verificar se a música está vinculada à playlist
+            string queryVerificar =
+                "SELECT COUNT(*) FROM PLAYLIST_MUSICA " +
+                "WHERE ID_PLAYLIST = @IdPlaylist " +
+                "AND ID_MUSICA = @IdMusica";
+
+            SqlCommand commandVerificar = new SqlCommand(queryVerificar);
+
+            commandVerificar.Parameters.AddWithValue(
+                "@IdPlaylist", idPlaylist);
+
+            commandVerificar.Parameters.AddWithValue(
+                "@IdMusica", idMusica);
+
+            DataTable dataTable = dataBase.GetDataTable(commandVerificar);
+
+            // Se o relacionamento não existir, retornar 0
+            if ((int)dataTable.Rows[0][0] == 0)
+            {
+                return 0;
+            }
+
+            // Criar o comando SQL para excluir o relacionamento
             string query =
                 "DELETE FROM PLAYLIST_MUSICA " +
                 "WHERE ID_PLAYLIST = @IdPlaylist " +
                 "AND ID_MUSICA = @IdMusica";
 
-            // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
 
-            // Definir os parâmetros
             command.Parameters.AddWithValue("@IdPlaylist", idPlaylist);
             command.Parameters.AddWithValue("@IdMusica", idMusica);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
+
 
         // Função pública para consultar um relacionamento específico
         public PlaylistMusica GetById(int idPlaylist, int idMusica)

@@ -17,6 +17,7 @@ namespace Verify.Views
 
             // Ao abrir a tela, pesquisar todos os álbuns
             Pesquisar();
+            OcultarColunas();
         }
 
         // Método para realizar a pesquisa
@@ -70,6 +71,10 @@ namespace Verify.Views
 
             dgvRegistrosAlbumSelecao.MultiSelect = false;
             dgvRegistrosAlbumSelecao.ReadOnly = true;
+        }
+        void OcultarColunas()
+        {
+            dgvRegistrosAlbumSelecao.Columns["IdArtista"].Visible = false;
         }
 
         // Recuperar o álbum selecionado

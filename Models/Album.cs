@@ -19,6 +19,10 @@ namespace Verify.Models
 
         // Relação Artista
         public Artista IdArtista{ get; set; }
+        public int ArtistaId
+        {
+            get { return IdArtista != null ? IdArtista.IdArtista : 0; }
+        }
 
     }
 

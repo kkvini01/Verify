@@ -22,6 +22,11 @@ namespace Verify.Models
 
         // Relações Usuário
         public Usuario IdUsuario { get; set; }
+        public int UsuarioId
+        {
+            get { return IdUsuario != null ? IdUsuario.IdUsuario : 0; }
+        }
+
 
     }
 

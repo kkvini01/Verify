@@ -64,22 +64,36 @@ namespace Verify.Controllers
         }
 
         // Função pública para excluir um usuário
+
         public int Excluir(int id)
         {
-            // Criar o comando SQL para o DELETE
+            // Verificar se o usuário possui playlists
+            string queryVerificar =
+                "SELECT COUNT(*) FROM PLAYLIST " +
+                "WHERE ID_USUARIO = @id_usuario";
+
+            SqlCommand commandVerificar = new SqlCommand(queryVerificar);
+            commandVerificar.Parameters.AddWithValue("@id_usuario", id);
+
+            DataTable dataTable = dataBase.GetDataTable(commandVerificar);
+
+            // Se possuir playlists, não permitir a exclusão
+            if ((int)dataTable.Rows[0][0] > 0)
+            {
+                return -1;
+            }
+
+            // Criar o comando SQL para excluir o usuário
             string query =
                 "DELETE FROM usuario " +
                 "WHERE id_usuario = @id_usuario";
 
-            // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
-
-            // Definir os parâmetros
             command.Parameters.AddWithValue("@id_usuario", id);
 
-            // Executar o comando
             return dataBase.ExecuteSql(command);
         }
+
 
         // Função pública para consultar um usuário por ID
         public Usuario GetById(int id)

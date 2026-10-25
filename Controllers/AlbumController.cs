@@ -72,20 +72,32 @@ namespace Verify.Controllers
         // Função pública para excluir um álbum
         public int Excluir(int id)
         {
+            // Verificar se o álbum está vinculado a alguma música
+            string queryVerificar =
+                "SELECT COUNT(*) FROM MUSICA " +
+                "WHERE ID_ALBUM = @id_album";
+
+            SqlCommand commandVerificar = new SqlCommand(queryVerificar);
+            commandVerificar.Parameters.AddWithValue("@id_album", id);
+
+            DataTable dataTable = dataBase.GetDataTable(commandVerificar);
+
+            // Se houver músicas vinculadas, não permitir a exclusão
+            if ((int)dataTable.Rows[0][0] > 0)
+                return -1;
+
             // Criar o comando SQL para o DELETE
             string query =
-                "DELETE FROM album " +
-                "WHERE id_album = @id_album";
+                "DELETE FROM ALBUM " +
+                "WHERE ID_ALBUM = @id_album";
 
-            // Instanciar o comando
             SqlCommand command = new SqlCommand(query);
-
-            // Definir os parâmetros
             command.Parameters.AddWithValue("@id_album", id);
 
             // Executar o comando
             return dataBase.ExecuteSql(command);
         }
+
 
         // Função pública para consultar um álbum por ID
         public Album GetById(int id)

@@ -23,6 +23,7 @@ namespace Verify.Views
 
             // Ao abrir a tela, apresentar todos os registros
             Pesquisar();
+            OcultarColunas();
         }
 
         // Método para realizar a pesquisa
@@ -84,6 +85,12 @@ namespace Verify.Views
                 dgvRegistrosMusicaSelecao.DataSource =
                     controller.GetAll();
             }
+        }
+        //Método para esconder colunas que não devem ser exibidas na grade
+        void OcultarColunas()
+        {
+            dgvRegistrosMusicaSelecao.Columns["IdArtista"].Visible = false;
+            dgvRegistrosMusicaSelecao.Columns["IdAlbum"].Visible = false;
         }
 
         // Recuperar a música selecionada na grade

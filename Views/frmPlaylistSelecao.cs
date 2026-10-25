@@ -27,6 +27,7 @@ namespace Verify.Views
             //Ao abrir a tela, ja ira pesquisar
             //A apresentar todos os registros cadastrados
             Pesquisar();
+            OcultarColunas();
         }
 
         //Criar o nosso método de pesquisa
@@ -71,6 +72,10 @@ namespace Verify.Views
                                 controller.GetById(int.Parse(txtIdPlaylist.Text));
                        else
                             dgvRegistrosPlaylistSelecao.DataSource = controller.GetAll();
+        }
+        void OcultarColunas()
+        {
+            dgvRegistrosPlaylistSelecao.Columns["IdUsuario"].Visible = false;
         }
 
         //Função para identificar o registro selecionado 
